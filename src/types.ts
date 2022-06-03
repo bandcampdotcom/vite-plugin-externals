@@ -23,12 +23,12 @@ export interface Options {
      */
     filter: (this: TransformPluginContext, code: string, id: string, ssr: boolean, isBuild: boolean) => boolean
     /**
-     * eg. externals: { vue: 'Vue' }
-     * set `true`: import Vue from 'vue' => const Vue = window.Vue;
-     * set `false`: eg. import Vue from 'vue' => const Vue = Vue;
+     * set `'globalThis'`: import Vue from 'vue' => const Vue = globalThis.Vue;
+     * set `'window'`: import Vue from 'vue' => const Vue = window.Vue;
+     * set `null`: eg. import Vue from 'vue' => const Vue = Vue;
      * @default true
      */
-    useWindow: boolean
+    globalObject: 'window' | 'globalThis' | null
     /**
      * magic-string generateMap options
      */

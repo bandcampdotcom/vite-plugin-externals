@@ -135,16 +135,16 @@ viteExternalsPlugin({
 }),
 ```
 
-### useWindow
+### globalObject
 
-set `false`, the `window` prefix will not be added.
+Defaults to `'globalThis'`. Can be set to `'window'`, or `null` to reference the global symbol without a prefix.
 
-**Warning**: If your module name has special characters, such as `/`, set useWindow option `false`, will throw error.
+**Warning**: If your module name has special characters, such as `/`, `globalObject: null` will throw error.
 
 ```js
 viteExternalsPlugin({
   vue: 'Vue',
-}, { useWindow: false }),
+}, { gloabalObject: null }),
 
 // source code
 import Vue from 'vue'

@@ -13,7 +13,7 @@ const defaultOptions: Options = {
     }
     return true
   },
-  useWindow: true,
+  globalObject: 'window',
   sourceMapOptions: {},
   debug: false,
 }

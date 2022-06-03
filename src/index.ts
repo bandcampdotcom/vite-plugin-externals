@@ -21,15 +21,15 @@ export function viteExternalsPlugin(externals: Externals = {}, userOptions: User
   const isExternalEmpty = externalsKeys.length === 0
 
   const transformModuleName: TransformModuleNameFn = (externalValue) => {
-    const { useWindow } = options
-    if (useWindow === false) {
+    const { globalObject } = options
+    if (globalObject === null) {
       return typeof externalValue === 'string' ? externalValue : externalValue.join('.')
     }
     if (typeof externalValue === 'string') {
-      return `window['${externalValue}']`
+      return `${globalObject}['${externalValue}']`
     }
     const values = externalValue.map((val) => `['${val}']`).join('')
-    return `window${values}`
+    return `${globalObject}${values}`
   }
 
   return {
