@@ -12,11 +12,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsc -w",
-    "build": "npm lint:fix && rimraf dist && tsc && npm build:es",
+    "build": "npm run lint:fix && rimraf dist && tsc && npm run build:es",
     "build:es": "tsc --module ESNEXT --outDir dist/es",
     "lint:fix": "eslint --fix ./src/**/*.ts",
-    "prepare": "npm build",
-    "release": "npm build && bumpp --push --tag --commit && npm publish"
+    "prepare": "npm run build",
+    "release": "npm run build && bumpp --push --tag --commit && npm publish"
   },
   "files": [
     "dist",
